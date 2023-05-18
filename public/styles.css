@@ -1,0 +1,35 @@
+.header {
+  background-color: green;
+}
+
+.nav {
+  background-color: blue;
+}
+
+/* login / sign up html styling */
+
+.login-sign-up {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  /* align-items: center; */
+}
+.login-header {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+}
+
+.login-form {
+  display: flex;
+  justify-content: space-around;
+  align-items: stretch;
+  /* gap: 30px; */
+  padding: 20px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
