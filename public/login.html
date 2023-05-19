@@ -10,70 +10,46 @@
   <body>
     <header class="login-header"><h1>Name of app here</h1></header>
     <section class="login-sign-up">
-      <form action="action_page.php" method="post" class="login-form">
-        <!-- <div class="imgcontainer">
-        <img src="img_avatar2.png" alt="Avatar" class="avatar" />
-      </div> -->
-
+      <!-- SIGN UP FORM  -->
+      <form class="login-form">
         <div class="container">
           <h4>Sign Up here</h4>
-          <label for="uname"><b>Username</b></label>
-          <input
-            type="text"
-            placeholder="Enter Username"
-            name="uname"
-            required
-          />
-
-          <label for="psw"><b>Password</b></label>
+          <label><b>Username</b></label>
+          <input type="text" placeholder="Enter Username" id="new-user" />
+          <label><b>Password</b></label>
           <input
             type="password"
             placeholder="Enter Password"
-            name="psw"
-            required
+            id="new-password"
           />
-
-          <button type="submit">Sign Up</button>
-          <button type="button" class="cancelbtn">Cancel</button>
+          <!-- SIGN UP BUTTON -->
+          <button type="submit" id="sign-up-btn">Sign Up</button>
         </div>
-
-        <!-- <div class="container" style="background-color: #f1f1f1">
-        <button type="button" class="cancelbtn">Cancel</button>
-        <span class="psw">Forgot <a href="#">password?</a></span>
-      </div> -->
       </form>
-      <form action="action_page.php" method="post" class="login-form">
-        <!-- <div class="imgcontainer">
-        <img src="img_avatar2.png" alt="Avatar" class="avatar" />
-      </div> -->
-
+      <!-- LOGIN FORM -->
+      <form class="login-form">
         <div class="container">
           <h4>Log In Here</h4>
-          <label for="uname"><b>Username</b></label>
+          <label><b>Username</b></label>
           <input
             type="text"
             placeholder="Enter Username"
             name="uname"
-            required
+            id="username"
           />
-
-          <label for="psw"><b>Password</b></label>
+          <label><b>Password</b></label>
           <input
             type="password"
             placeholder="Enter Password"
             name="psw"
-            required
+            id="password"
           />
-
-          <button type="submit">Login</button>
-          <button type="button" class="cancelbtn">Cancel</button>
+          <!-- LOGIN BUTTON -->
+          <button type="submit" id="log-in-btn">Login</button>
         </div>
-
-        <!-- <div class="container" style="background-color: #f1f1f1">
-        <button type="button" class="cancelbtn">Cancel</button>
-        <span class="psw">Forgot <a href="#">password?</a></span>
-      </div> -->
       </form>
     </section>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.4.0/axios.min.js"></script>
+    <script src="script.js"></script>
   </body>
 </html>

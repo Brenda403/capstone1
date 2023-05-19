@@ -1,12 +1,17 @@
 // base url here
-const base_url = `http://localhost:4000`;
-// pull in buttons to add event listeners below
-
-//pull in input (text) areas
-
+const baseURL = `http://localhost:4000`;
+// pull in login form buttons to add event listeners below
+const signUpBtn = document.getElementById("sign-up-btn");
+const logInBtn = document.getElementById("log-in-btn");
+//pull in input (text) areas from login
+const username = document.getElementById("username");
+const newUser = document.getElementById("new-user");
+const password = document.getElementById("password");
+const newPassword = document.getElementById("new-password");
 //
-const login = () => {
-  let body = { username: username.value, password: password.value }; // make sure they match the HTML value element names.
+const login = (e) => {
+  e.preventDefault();
+  let body = { username: username.value, password: password.value };
   axios
     .post(`${baseURL}/api/login`, body)
     .then((res) => {
@@ -14,12 +19,13 @@ const login = () => {
       let token = res.data.token;
       sessionStorage.setItem("token", token);
       sessionStorage.setItem("userId", res.data.id); // .id is the primary key on your user table
-      //window.location.href = `/`; this will be where you are redirected after you login
+      window.location.href = `profile.html`; // this will be where you are redirected after you login
     })
     .catch((err) => console.log(err));
 };
 
-const signUp = () => {
+const signUp = (e) => {
+  e.preventDefault();
   let body = { username: newUser.value, password: newPassword.value }; // make sure they match the HTML value element names.
   axios
     .post(`${baseURL}/api/signUp`, body)
@@ -29,10 +35,10 @@ const signUp = () => {
       console.log(res.data);
       sessionStorage.setItem("token", token);
       sessionStorage.setItem("userId", res.data.id); // .id is the primary key on your user table
-      //window.location.href = `/`; this will be where you are redirected after you login
+      window.location.href = `profile.html`; //this will be where you are redirected after you login
     })
     .catch((err) => console.log(err));
 };
 // event listeners below should match the buttons.
-//   userLogin.addEventListener('click', login)
-//   newUserSubmit.addEventListener('click', signUp)
+logInBtn.addEventListener("click", login);
+signUpBtn.addEventListener("click", signUp);

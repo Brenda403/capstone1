@@ -4,7 +4,7 @@ const { CONNECTION_STRING, SECRET } = process.env;
 const Sequelize = require("sequelize");
 const jwt = require("jsonwebtoken");
 
-// < where it says "email" and "passhash" change to match the column names in DB "username" and "password" respectively. He labeled his table to watch users > change to recipes (my table name).
+// < where it says "email" and "passhash" change to match the column names in DB "username" and "password" respectively. DJ labeled his table to watch users > change to users (my table name).
 
 // watch.users.id
 
