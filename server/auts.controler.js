@@ -112,10 +112,7 @@ module.exports = {
         `WITH inserted_recipes AS (
           INSERT INTO recipes (recipename, ingredients, instructions, imgurl, summary) VALUES ('${recipe}', '${ingredients}', '${instructions}', '${recipeImage}', '${recipeNotes}') RETURNING recipeid)
         INSERT INTO userrecipes (userid, recipeid)
-        VALUES ('${userId}', (SELECT recipeid FROM inserted_recipes));`,
-        {
-          bind: [recipe, ingredients, instructions, recipeImage, userId],
-        }
+        VALUES ('${userId}', (SELECT recipeid FROM inserted_recipes));`
       )
       .then((dbRes) => {
         res.status(200).send(...dbRes[0], userId);

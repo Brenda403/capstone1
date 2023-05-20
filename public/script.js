@@ -60,7 +60,7 @@ const login = (e) => {
 // CREATE RECIPE
 const createRecipe = (e) => {
   e.preventDefault();
-  let userId = sessionStorage.getItem("userId");
+  let userId = sessionStorage.getItem("userid");
   console.log("hello");
   console.log(userId);
   console.log(sessionStorage);
