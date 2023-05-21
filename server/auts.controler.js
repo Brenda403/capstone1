@@ -119,4 +119,18 @@ module.exports = {
       })
       .catch((err) => console.log(err));
   },
+  getRecipes: (req, res) => {
+    const { userid } = req.query;
+    sequelize
+      .query(
+        `SELECT recipes.recipename, recipes.ingredients, recipes.instructions, recipes.imgurl, recipes.summary
+        FROM recipes
+        INNER JOIN userrecipes ON recipes.recipeid = userrecipes.recipeid
+        WHERE userrecipes.userid = ${userid};`
+      )
+      .then((dbRes) => {
+        res.status(200).send(dbRes[0]);
+      })
+      .catch((err) => console.log(err));
+  },
 };

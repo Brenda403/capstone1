@@ -13,8 +13,13 @@ const password = document.getElementById("password");
 const newPassword = document.getElementById("new-password");
 
 // PROFILE HTML CODE
+
 // recipe card form button
 const recipeBtn = document.getElementById("recipe-submit-btn");
+// display all recipes button & container
+const displayBtn = document.getElementById("display-btn");
+const recipeContainer = document.getElementById("recipe-container");
+
 // recipe card input
 const recipeName = document.getElementById("recipe-name");
 const ingredients = document.getElementById("ingredients");
@@ -91,6 +96,36 @@ const createRecipe = (e) => {
     });
 };
 
+// DISPLAY RECIPES
+const displayRecipes = () => {
+  axios
+    .get(`${baseURL}/api/displayRecipes?userid=userid`, {
+      //userId: sessionStorage.getItem("userid"),
+    })
+    .then((res) => {
+      res.data.forEach((recipe) => {
+        // Create a card element for each recipe
+        const card = document.createElement("div");
+        card.classList.add("recipe-card");
+
+        // content and attributes of the card based on recipes data
+        card.innerHTML = `
+          <h3>${recipe.recipename}</h3>
+          <p>${recipe.ingredients}</p>
+          <p>${recipe.instructions}</p>
+          <img src="${recipe.imgurl}" alt="${recipe.recipename}">
+          <p>${recipe.summary}</p>
+        `;
+
+        // Append the card to the recipe container
+        recipeContainer.appendChild(card);
+      });
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+};
+
 // event listeners below should match the buttons.
 // LOGIN EVENT LISTENER
 // logInBtn.addEventListener("click", login);
@@ -99,3 +134,4 @@ const createRecipe = (e) => {
 // RECIPE INPUT EVENT LISTENER
 
 recipeBtn.addEventListener("click", createRecipe);
+displayBtn.addEventListener("click", displayRecipes);
