@@ -123,13 +123,25 @@ module.exports = {
     const { userid } = req.query;
     sequelize
       .query(
-        `SELECT recipes.recipename, recipes.ingredients, recipes.instructions, recipes.imgurl, recipes.summary
+        `SELECT recipes.recipeid, recipes.recipename, recipes.ingredients, recipes.instructions, recipes.imgurl, recipes.summary
         FROM recipes
         INNER JOIN userrecipes ON recipes.recipeid = userrecipes.recipeid
         WHERE userrecipes.userid = ${userid};`
       )
       .then((dbRes) => {
         res.status(200).send(dbRes[0]);
+      })
+      .catch((err) => console.log(err));
+  },
+  deleteRecipeCard: (req, res) => {
+    const { recipeid } = req.params;
+    sequelize
+      .query(`DELETE FROM recipes WHERE recipeid = ${recipeid}`)
+      .then(() => {
+        sequelize.query(`DELETE FROM userrecipes WHERE recipeid = ${recipeid}`);
+      })
+      .then(() => {
+        res.status(200).send();
       })
       .catch((err) => console.log(err));
   },

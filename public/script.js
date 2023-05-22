@@ -1,3 +1,5 @@
+//const { default: axios } = require("axios");
+
 // base url here
 const baseURL = `http://localhost:4000`;
 
@@ -26,6 +28,8 @@ const ingredients = document.getElementById("ingredients");
 const instructions = document.getElementById("instructions");
 const recipeImage = document.getElementById("img-url");
 const recipeNotes = document.getElementById("recipe-notes");
+
+// 1st Main Feature- 2 parts: sign up and log in
 
 // SIGN UP
 const signUp = (e) => {
@@ -62,6 +66,8 @@ const login = (e) => {
 
 //sessionStorage.getItem("userId") to put the user id into the table
 
+// 2nd Main Feature create a recipe
+
 // CREATE RECIPE
 const createRecipe = (e) => {
   e.preventDefault();
@@ -88,6 +94,7 @@ const createRecipe = (e) => {
       ingredients.value = "";
       instructions.value = "";
       recipeImage.value = "";
+      recipeNotes.value = "";
       // Store the userId in sessionStorage
       sessionStorage.setItem("userId", res.data.userId);
     })
@@ -95,6 +102,7 @@ const createRecipe = (e) => {
       console.error(error);
     });
 };
+// 3rd main feature
 
 // DISPLAY RECIPES
 const displayRecipes = () => {
@@ -103,6 +111,7 @@ const displayRecipes = () => {
       //userId: sessionStorage.getItem("userid"),
     })
     .then((res) => {
+      console.log(res.data);
       res.data.forEach((recipe) => {
         // Create a card element for each recipe
         const card = document.createElement("div");
@@ -115,9 +124,10 @@ const displayRecipes = () => {
           <p>${recipe.instructions}</p>
           <img src="${recipe.imgurl}" alt="${recipe.recipename}">
           <p>${recipe.summary}</p>
+          <button class="deleteBtn" onclick="deleteRecipe(${recipe.recipeid})">Delete</button>
+          <button class="updateBtn" onclick="${recipe.id}">Update</button>
         `;
 
-        // Append the card to the recipe container
         recipeContainer.appendChild(card);
       });
     })
@@ -125,6 +135,23 @@ const displayRecipes = () => {
       console.error(error);
     });
 };
+//const deleteBtn = document.querySelector(".deleteBtn");
+
+// 4th Main Feature delete recipes
+
+const deleteRecipe = (recipeid) => {
+  console.log(recipeid);
+  axios
+    .delete(`${baseURL}/api/deleteRecipe/${recipeid}`)
+    .then(() => {
+      displayRecipes();
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+};
+
+const updateRecipe = (recipeid) => {};
 
 // event listeners below should match the buttons.
 // LOGIN EVENT LISTENER
