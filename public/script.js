@@ -125,7 +125,7 @@ const displayRecipes = () => {
           <img src="${recipe.imgurl}" alt="${recipe.recipename}">
           <p>${recipe.summary}</p>
           <button class="deleteBtn" onclick="deleteRecipe(${recipe.recipeid})">Delete</button>
-          <button class="updateBtn" onclick="${recipe.id}">Update</button>
+          <button class="updateBtn" onclick="updateRecipe(${recipe.recipeid})">Update</button>
         `;
 
         recipeContainer.appendChild(card);
@@ -151,12 +151,38 @@ const deleteRecipe = (recipeid) => {
     });
 };
 
-const updateRecipe = (recipeid) => {};
+// 5th Main Feature update recipes
+const updateRecipe = (recipeid) => {
+  //user prompts
+
+  const updatedRecipeName = prompt("Enter the updated recipe name:");
+  const updatedIngredients = prompt("Enter the updated ingredients:");
+  const updatedInstructions = prompt("Enter the updated instructions:");
+  const updatedImage = prompt("Enter new image url:");
+  const updatedNotes = prompt("Enter the updated notes:");
+
+  const updatedRecipe = {
+    recipe: updatedRecipeName,
+    ingredients: updatedIngredients,
+    instructions: updatedInstructions,
+    recipeImage: updatedImage,
+    recipeNotes: updatedNotes,
+  };
+  axios
+    .put(`${baseURL}/api/updateRecipe/${recipeid}`, updatedRecipe)
+    .then((res) => {
+      displayRecipes();
+      console.log("Recipe updated:", res.data);
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+};
 
 // event listeners below should match the buttons.
 // LOGIN EVENT LISTENER
-// logInBtn.addEventListener("click", login);
-// signUpBtn.addEventListener("click", signUp);
+logInBtn.addEventListener("click", login);
+signUpBtn.addEventListener("click", signUp);
 
 // RECIPE INPUT EVENT LISTENER
 

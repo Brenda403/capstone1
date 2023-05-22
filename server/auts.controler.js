@@ -4,10 +4,6 @@ const { CONNECTION_STRING, SECRET } = process.env;
 const Sequelize = require("sequelize");
 const jwt = require("jsonwebtoken");
 
-// < where it says "email" and "passhash" change to match the column names in DB "username" and "password" respectively. DJ labeled his table to watch users > change to users (my table name).
-
-// watch.users.id
-
 const createToken = (email, id) => {
   return jwt.sign(
     {
@@ -144,5 +140,27 @@ module.exports = {
         res.status(200).send();
       })
       .catch((err) => console.log(err));
+  },
+  updateRecipe: (req, res) => {
+    const { recipeid } = req.params;
+    const { recipe, ingredients, instructions, recipeImage, recipeNotes } =
+      req.body;
+    sequelize
+      .query(
+        `UPDATE recipes 
+        SET recipename = '${recipe}', 
+            ingredients = '${ingredients}', 
+            instructions = '${instructions}', 
+            imgurl = '${recipeImage}', 
+            summary = '${recipeNotes}' 
+        WHERE recipeid = ${recipeid}`
+      )
+      .then(() => {
+        res.status(200).send("Recipe updated successfully");
+      })
+      .catch((err) => {
+        console.error(err);
+        res.status(500).send("An error occurred while updating the recipe");
+      });
   },
 };
