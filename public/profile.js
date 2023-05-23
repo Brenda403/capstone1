@@ -60,16 +60,30 @@ const createCard = (recipe) => {
   // content and attributes of the card based on recipes data
   card.innerHTML = `
           <h3>${recipe.recipename}</h3>
-          <p>${recipe.ingredients}</p>
-          <p>${recipe.instructions}</p>
+          <p class="text-capped">${recipe.ingredients}</p>
+          <p class="text-capped">${recipe.instructions}</p>
           <img src="${recipe.imgurl}" alt="${recipe.recipename}">
-          <p>${recipe.summary}</p>
+          <p class="text-capped">${recipe.summary}</p>
           <button class="deleteBtn" onclick="deleteRecipe(${recipe.recipeid})">Delete</button>
           <button class="updateBtn" onclick="updateRecipe(${recipe.recipeid})">Update</button>
         `;
 
   return card;
 };
+
+// Recipe Card text capping and expanding
+const toggleTextExpansion = (element) => {
+  element.classList.toggle("text-expanded");
+};
+
+document.addEventListener("click", (event) => {
+  const targetElement = event.target;
+
+  if (targetElement.matches(".text-capped")) {
+    toggleTextExpansion(targetElement);
+  }
+});
+
 // 3rd main feature
 
 // DISPLAY RECIPES

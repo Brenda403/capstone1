@@ -6,35 +6,29 @@
   --onyx: #343e3d;
 }
 body {
-  font-family: "Open Sans", sans-serif;
+  font-family: "Urbanist", sans-serif;
   background: var(--bronze);
   margin: 0 auto 0 auto;
   width: 100%;
   text-align: center;
-  margin: 20px 0px 20px 0px;
-}
-.header {
-  background-color: green;
 }
 
 .login-page {
   display: flex;
   flex-direction: row;
-  margin: 0 auto 0 auto;
   /* justify-content: space-around; */
 }
 
 .aside {
   display: flex;
-
   flex-grow: 1;
   align-items: stretch;
   justify-content: flex-start;
 }
 
 .aside img {
-  width: 75%; /* Adjust the desired width */
-  height: auto; /* Maintain the aspect ratio */
+  width: 90%;
+  height: 100%;
 }
 
 .nav {
@@ -43,11 +37,15 @@ body {
 
 /* login / sign up html styling */
 
+h4 {
+  text-decoration: underline;
+}
 .login-sign-up {
   display: flex;
-  flex-grow: 2;
+  flex-grow: 6;
   flex-direction: column;
   justify-content: flex-start;
+  margin-top: 50px;
   /* align-content: stretch; */
   /* align-items: center; */
 }
@@ -75,7 +73,6 @@ body {
 .container {
   display: flex;
   flex-direction: column;
-  /* justify-content: center; */
   align-self: center;
 }
 
@@ -86,13 +83,14 @@ p {
 }
 
 h1 {
-  font-size: 1.5em;
+  font-size: 2.5em;
   color: #525252;
+  padding-bottom: 10px;
 }
 
 .box {
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   background: white;
   width: 300px;
   border-radius: 6px;
@@ -185,6 +183,7 @@ p {
 /* RECIPE CARD CSS */
 
 .recipe-card {
+  vertical-align: middle;
   background-color: #fff;
   border: 1px solid #ccc;
   border-radius: 4px;
@@ -199,15 +198,17 @@ p {
 }
 
 .recipe-card p {
+  /* display: flex;
+  flex-wrap: wrap;
+  align-self: center; */
   margin-bottom: 10px;
 }
 
 .recipe-card img {
-  /* width: 100%;
-  max-width: 300px;
-  height: auto; */
+  /* width: 75%; */
+  height: 400px;
   width: 300px;
-  height: 200px;
+  /* height: auto;  */
   object-fit: cover;
   margin-bottom: 10px;
 }
@@ -224,4 +225,18 @@ p {
 
 .recipe-card button:hover {
   background-color: #45a049;
+}
+
+/* Text capping  */
+.text-capped {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  cursor: pointer;
+}
+
+.text-expanded {
+  white-space: normal;
+  overflow: visible;
+  text-overflow: initial;
 }
