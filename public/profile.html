@@ -9,27 +9,32 @@
   </head>
   <body>
     <header class="header">
-      <h1>My Recipes</h1>
+      <h1>Recipely</h1>
     </header>
     <nav></nav>
-    <main>
+    <main class="profile-main">
       <section>
-        <form>
-          <h4>Create Recipe</h4>
-          Recipe Name:
-          <input type="text" name="recipe-name " id="recipe-name" />
-          <br />
-          Ingredients: <input type="text" name="ingredients" id="ingredients" />
-          <br />
-          Instructions:
-          <input type="text" name="instructions" id="instructions" />
-          <br />
-          Image Url: <input type="text" name="img-url" id="img-url" />
-          <br />
-          Recipe Notes:
-          <input type="text" name="recipe-notes" id="recipe-notes" />
-          <button id="recipe-submit-btn">Submit</button>
-        </form>
+        <div class="box">
+          <form>
+            <h4>Create Recipe Card</h4>
+            <p>Recipe Name:</p>
+            <input type="text" name="recipe-name " id="recipe-name" />
+            <br />
+            <p>Ingredients:</p>
+            <input type="text" name="ingredients" id="ingredients" />
+            <br />
+            <p>Instructions:</p>
+            <input type="text" name="instructions" id="instructions" />
+            <br />
+            <p>Image Url:</p>
+            <input type="text" name="img-url" id="img-url" />
+            <br />
+            <p>Recipe Notes:</p>
+            <input type="text" name="recipe-notes" id="recipe-notes" />
+            <br />
+            <button id="recipe-submit-btn">Submit</button>
+          </form>
+        </div>
       </section>
       <section>
         <button id="display-btn">Display All Recipes</button>
@@ -38,6 +43,6 @@
       <section id="recipe-container"></section>
     </main>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.4.0/axios.min.js"></script>
-    <script src="script.js"></script>
+    <script src="profile.js"></script>
   </body>
 </html>

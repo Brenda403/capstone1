@@ -8,47 +8,72 @@
     <title>Document</title>
   </head>
   <body>
-    <header class="login-header"><h1>Name of app here</h1></header>
-    <section class="login-sign-up">
-      <!-- SIGN UP FORM  -->
-      <form class="login-form">
-        <div class="container">
-          <h4>Sign Up here</h4>
-          <label><b>Username</b></label>
-          <input type="text" placeholder="Enter Username" id="new-user" />
-          <label><b>Password</b></label>
-          <input
-            type="password"
-            placeholder="Enter Password"
-            id="new-password"
-          />
-          <!-- SIGN UP BUTTON -->
-          <button type="submit" id="sign-up-btn">Sign Up</button>
+    <!-- <header class="login-header"><h1>Name of app here</h1></header> -->
+    <div class="login-page">
+      <aside class="aside">
+        <img
+          src="/resources/capstone-img1.jpg"
+          alt="older woman baking with child"
+        />
+      </aside>
+      <section class="login-sign-up">
+        <h1>Recipely</h1>
+        <p>
+          A place to keep YOUR recipes<br />
+          because from start to finish, meals are personal
+        </p>
+        <!-- SIGN UP FORM  -->
+        <div class="both-forms">
+          <form class="login-form box">
+            <div class="container">
+              <h4>Sign Up here</h4>
+              <label><b>Username</b></label>
+              <input
+                type="text"
+                placeholder="Enter Username"
+                class="username"
+                id="new-user"
+              />
+              <label><b>Password</b></label>
+              <input
+                type="password"
+                placeholder="Enter Password"
+                class="password"
+                id="new-password"
+              />
+              <!-- SIGN UP BUTTON -->
+              <button type="submit" class="btn" id="sign-up-btn">
+                Sign Up
+              </button>
+            </div>
+          </form>
+          <!-- LOGIN FORM -->
+          <form class="login-form box">
+            <div class="container">
+              <h4>Log In Here</h4>
+              <label><b>Username</b></label>
+              <input
+                type="text"
+                placeholder="Enter Username"
+                name="uname"
+                class="username"
+                id="username"
+              />
+              <label><b>Password</b></label>
+              <input
+                type="password"
+                placeholder="Enter Password"
+                name="psw"
+                class="password"
+                id="password"
+              />
+              <!-- LOGIN BUTTON -->
+              <button type="submit" class="btn" id="log-in-btn">Login</button>
+            </div>
+          </form>
         </div>
-      </form>
-      <!-- LOGIN FORM -->
-      <form class="login-form">
-        <div class="container">
-          <h4>Log In Here</h4>
-          <label><b>Username</b></label>
-          <input
-            type="text"
-            placeholder="Enter Username"
-            name="uname"
-            id="username"
-          />
-          <label><b>Password</b></label>
-          <input
-            type="password"
-            placeholder="Enter Password"
-            name="psw"
-            id="password"
-          />
-          <!-- LOGIN BUTTON -->
-          <button type="submit" id="log-in-btn">Login</button>
-        </div>
-      </form>
-    </section>
+      </section>
+    </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.4.0/axios.min.js"></script>
     <script src="script.js"></script>
   </body>

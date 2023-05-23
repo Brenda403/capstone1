@@ -130,19 +130,28 @@ module.exports = {
       .catch((err) => console.log(err));
   },
   deleteRecipeCard: (req, res) => {
-    const { recipeid } = req.params;
+    const { recipeid, userid } = req.params;
     sequelize
       .query(`DELETE FROM recipes WHERE recipeid = ${recipeid}`)
       .then(() => {
         sequelize.query(`DELETE FROM userrecipes WHERE recipeid = ${recipeid}`);
       })
       .then(() => {
-        res.status(200).send();
+        sequelize
+          .query(
+            `SELECT recipes.recipeid, recipes.recipename, recipes.ingredients, recipes.instructions, recipes.imgurl, recipes.summary
+        FROM recipes
+        INNER JOIN userrecipes ON recipes.recipeid = userrecipes.recipeid
+        WHERE userrecipes.userid = ${userid};`
+          )
+          .then((dbRes) => {
+            res.status(200).send(dbRes[0]);
+          });
       })
       .catch((err) => console.log(err));
   },
   updateRecipe: (req, res) => {
-    const { recipeid } = req.params;
+    const { recipeid, userid } = req.params;
     const { recipe, ingredients, instructions, recipeImage, recipeNotes } =
       req.body;
     sequelize
@@ -156,7 +165,16 @@ module.exports = {
         WHERE recipeid = ${recipeid}`
       )
       .then(() => {
-        res.status(200).send("Recipe updated successfully");
+        sequelize
+          .query(
+            `SELECT recipes.recipeid, recipes.recipename, recipes.ingredients, recipes.instructions, recipes.imgurl, recipes.summary
+        FROM recipes
+        INNER JOIN userrecipes ON recipes.recipeid = userrecipes.recipeid
+        WHERE userrecipes.userid = ${userid};`
+          )
+          .then((dbRes) => {
+            res.status(200).send(dbRes[0]);
+          });
       })
       .catch((err) => {
         console.error(err);
