@@ -72,17 +72,17 @@ const createCard = (recipe) => {
 };
 
 // Recipe Card text capping and expanding
-const toggleTextExpansion = (element) => {
-  element.classList.toggle("text-expanded");
-};
+// const toggleTextExpansion = (element) => {
+//   element.classList.toggle("text-expanded");
+// };
 
-document.addEventListener("click", (event) => {
-  const targetElement = event.target;
+// document.addEventListener("click", (event) => {
+//   const targetElement = event.target;
 
-  if (targetElement.matches(".text-capped")) {
-    toggleTextExpansion(targetElement);
-  }
-});
+//   if (targetElement.matches(".text-capped")) {
+//     toggleTextExpansion(targetElement);
+//   }
+// });
 
 // 3rd main feature
 
